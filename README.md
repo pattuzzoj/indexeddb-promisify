@@ -1,17 +1,17 @@
-# indexedb-async
+# indexeddb-promisify
 
-`indexedb-async` is an async wrapper for IndexedDB that provides an ergonomic interface for working with browser databases. Every operation runs inside a transaction to ensure consistency. For multi-store operations, the `transaction` helper allows safe handling of multiple object stores and provides a `done` promise to wait for the commit.
+`indexeddb-promisify` is an async wrapper for IndexedB that provides an ergonomic interface for working with browser databases. Every operation runs inside a transaction to ensure consistency. For multi-store operations, the `transaction` helper allows safe handling of multiple object stores and provides a `done` promise to wait for the commit.
 
 ## Installation
 
 Install easily using your favorite package manager:
 
 ```bash
-npm install indexedb-async
+npm install indexeddb-promisify
 # or
-yarn add indexedb-async
+yarn add indexeddb-promisify
 # or
-pnpm add indexedb-async
+pnpm add indexeddb-promisify
 ```
 ---
 
@@ -20,7 +20,7 @@ pnpm add indexedb-async
 The configuration follows the `IndexedDBConfig` interface:
 
 ```ts
-import openIndexedDB, { IndexedDBConfig } from 'indexedb-async';
+import openIndexedDB, { IndexedDBConfig } from 'indexeddb-promisify';
 
 const config: IndexedDBConfig = {
   name: 'my-database',
@@ -98,7 +98,7 @@ await deleteDatabase(); // delete the database entirely
 
 ## Store Schema & Migrations
 
-`indexedb-async` allows you to define your database schema through the `stores` configuration and optionally handle upgrades via `migrations`.
+`indexeddb-promisify` allows you to define your database schema through the `stores` configuration and optionally handle upgrades via `migrations`.
 
 ### Store Schema
 
@@ -116,7 +116,7 @@ export interface StoreSchema {
 
 ### Schema Synchronization
 
-By default, `indexedb-async` synchronizes the schema automatically:
+By default, `indexeddb-promisify` synchronizes the schema automatically:
 
 1. Deletes object stores not present in the configuration.
 2. Creates missing stores.
@@ -245,7 +245,7 @@ interface CursorOptions {
 
 ## Transactions
 
-`indexedb-async` provides a flexible `transaction` helper that wraps one or more object stores in a single `IDBTransaction` and exposes a `done` promise for commit handling.
+`indexeddb-promisify` provides a flexible `transaction` helper that wraps one or more object stores in a single `IDBTransaction` and exposes a `done` promise for commit handling.
 
 ### Basic Usage
 
